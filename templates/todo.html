@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>SQLite ToDo</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Twoja lista ToDo</h1>
+    {% if tasks|length < 1 %} <h2>Nie ma obecnie zadań, stwórz nowe poniżej.</h2>
+        {% else %}
+        <table class="task_list">
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task[1] }}</td>
+                <td>{{ task[2] }}</td>
+                <td>
+                    <a href="/delete/{{task[0]}}">Usuń</a>
+                    <br>
+                    <a href="/update/{{task[0]}}">Zaktualizuj</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <div class="form">
+            <h3>Stwórz nowe zadanie</h3>
+            <form action="/" method="POST">
+                <label for="title">Tytuł zadania:</label><br>
+                <input type="text" name="title" id="title"><br>
+                <label for="description">Opis zadania:</label><br>
+                <input type="text" name="description" id="description"><br>
+                <input type="submit" value="Dodaj zadanie">
+            </form>
+        </div>
+</div>
+{% endblock %}

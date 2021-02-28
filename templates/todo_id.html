@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Info</title>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <h2> Change: </h2>
+    <form method="POST" action="/update/{{ task_id }}/">
+
+        <table>
+
+            <tr>
+                <th><label name="title">Taks Title</label></th>
+                <th><input type="text" name="title" id="title"></th>
+            </tr>
+            <tr>
+                <th><label name="description">Taks Description</label></th>
+                <th><input type="text" name="description" id="description"></th>
+            </tr>
+
+        </table><br>
+        <input type="submit" value="Submit Changes">
+    </form>
+</body>
+{% endblock %}
